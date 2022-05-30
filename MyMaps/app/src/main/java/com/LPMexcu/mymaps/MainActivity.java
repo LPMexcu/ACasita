@@ -120,21 +120,21 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 myLocation=location;
                 LatLng ltlng=new LatLng(location.getLatitude(),location.getLongitude());
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(
-                        ltlng, 16f);
+                        ltlng, 30f);
                 mMap.animateCamera(cameraUpdate);
             }
         });
 
-        //get destination location when user click on map
+        //get destination   location when user click on map
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-
-                end=latLng;
+                LatLng micasa = new LatLng(20.129537,-101.174336) ;
+                end=micasa;
 
                 mMap.clear();
 
-                start=new LatLng(myLocation.getLatitude(),myLocation.getLongitude());
+                start=new LatLng(20.140399,-101.150556);
                 //start route finding
                 Findroutes(start,end);
             }
@@ -191,7 +191,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     public void onRoutingSuccess(ArrayList<Route> route, int shortestRouteIndex) {
 
         CameraUpdate center = CameraUpdateFactory.newLatLng(start);
-        CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(30);
         if(polylines!=null) {
             polylines.clear();
         }
